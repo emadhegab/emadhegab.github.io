@@ -172,3 +172,9 @@ ul.skills li:last-child{
     ul.skills li{ font-size: 9pt; margin-bottom:0}
 
 }
+
+@media print {
+  .hidden-print {
+    display: none !important;
+  }
+}
