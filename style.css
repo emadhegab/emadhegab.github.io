@@ -173,7 +173,7 @@ ul.skills li:last-child{
 
 }
 
-@media print {
+@media pdf {
   .hidden-print {
     display: none !important;
   }
