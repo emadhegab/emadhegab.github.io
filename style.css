@@ -95,7 +95,9 @@ body {
   color: #888;
   margin-bottom: 10px;
 }
-
+.light b {
+  color: #000;
+}
 .main-content .section-text {
   font-size: 15px;
   line-height: 26px;
