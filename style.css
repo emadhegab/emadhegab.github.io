@@ -89,6 +89,45 @@ body {
   color: #001219;
 }
 
+.company-group {
+  margin-bottom: 30px;
+}
+
+.company-group .company-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  line-height: 28px;
+  color: #001219;
+}
+
+.company-group .position {
+  margin-top: 20px;
+  margin-left: 0;
+  padding-left: 20px;
+  border-left: 2px solid #0a9396;
+  position: relative;
+}
+
+.company-group .position::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #0a9396;
+}
+
+.company-group .position h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 24px;
+  color: #001219;
+}
+
 .main-content .light {
   font-size: 13px;
   text-transform: uppercase;
