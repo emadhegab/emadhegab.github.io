@@ -1,0 +1,290 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #1a1a2e;
+  background: #eef2f7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Page shell ─────────────────────────────── */
+.page {
+  max-width: 860px;
+  margin: 40px auto;
+  background: #fff;
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.10);
+}
+
+/* ─── Header ─────────────────────────────────── */
+.header {
+  background: #005f73;
+  padding: 44px 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.header h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.header-title {
+  font-size: 14px;
+  color: #94d2bd;
+  margin-top: 8px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.header-contact {
+  text-align: right;
+  font-size: 13.5px;
+  line-height: 2;
+  color: #cae9ff;
+  white-space: nowrap;
+}
+
+.header-contact a {
+  color: #94d2bd;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.header-contact a:hover {
+  color: #ee9b00;
+}
+
+/* ─── Main body ──────────────────────────────── */
+.main-content {
+  padding: 44px 52px 56px;
+}
+
+section {
+  margin-bottom: 38px;
+}
+
+/* ─── Section headings ───────────────────────── */
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #005f73;
+  border-bottom: 2px solid #0a9396;
+  padding-bottom: 6px;
+  margin-bottom: 20px;
+}
+
+/* ─── Company / employer ─────────────────────── */
+h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #001219;
+  margin-bottom: 2px;
+  line-height: 1.35;
+}
+
+.company-name {
+  font-size: 19px !important;
+}
+
+/* ─── Role title ─────────────────────────────── */
+h4 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #003047;
+  margin-bottom: 2px;
+}
+
+/* ─── Concurrent role badge ──────────────────── */
+.concurrent-badge {
+  display: inline-block;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #0a9396;
+  border: 1px solid #0a9396;
+  border-radius: 3px;
+  padding: 1px 6px;
+  vertical-align: middle;
+  margin-left: 8px;
+  position: relative;
+  top: -1px;
+}
+
+/* ─── Date / location line ───────────────────── */
+.light {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.light b {
+  color: #555;
+  font-weight: 700;
+}
+
+/* ─── Lists ──────────────────────────────────── */
+ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+ul li {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* ─── Metrics strip ──────────────────────────── */
+.metrics-strip {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  background: #f0f9fb;
+  border: 1px solid #b2dde8;
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 38px;
+  flex-wrap: wrap;
+}
+
+.metric {
+  text-align: center;
+  flex: 1;
+  min-width: 80px;
+}
+
+.metric-value {
+  font-family: 'Merriweather', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #005f73;
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* ─── Skills ─────────────────────────────────── */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-item {
+  display: inline-block;
+  background: #e8f4f8;
+  color: #005f73;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 4px;
+  border: 1px solid #b2dde8;
+  line-height: 1.4;
+}
+
+/* ─── Company group (multi-role) ─────────────── */
+.company-group {
+  margin-bottom: 30px;
+}
+
+.position {
+  margin-top: 18px;
+  padding-left: 18px;
+  border-left: 3px solid #0a9396;
+  position: relative;
+}
+
+.position::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #0a9396;
+}
+
+/* ─── Single-role job ────────────────────────── */
+.job {
+  margin-bottom: 26px;
+}
+
+/* ─── Additional grid (languages etc.) ──────── */
+.additional-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.additional-grid h2 {
+  font-size: 10px;
+}
+
+ul.plain-list {
+  list-style: none;
+  padding: 0;
+}
+
+ul.plain-list li {
+  font-size: 13.5px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+ul.plain-list a {
+  color: #0a9396;
+  text-decoration: none;
+}
+
+ul.plain-list a:hover {
+  color: #ee9b00;
+}
+
+/* ─── Print ──────────────────────────────────── */
+@media print {
+  body { background: #fff; }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .header {
+    padding: 28px 36px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .main-content {
+    padding: 28px 36px 36px;
+  }
+}
