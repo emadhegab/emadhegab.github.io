@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Moe Hegab - Resume</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700|Source+Sans+Pro:400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -12,169 +13,206 @@
 
   <!-- Header -->
   <header class="header">
-    <h1>Principal iOS Engineer &middot; Tech Lead</h1>
-    <div class="header-name">Moe Hegab</div>
+    <div class="header-left">
+      <h1>Principal iOS Engineer &middot; Tech Lead</h1>
+      <div class="header-name">Moe Hegab</div>
+      <div class="contacts">
+        <a href="tel:+4915758167515"><i class="fas fa-phone"></i> +49 157 58167515</a>
+        <a href="mailto:emad.hegab@gmail.com"><i class="fas fa-envelope"></i> emad.hegab@gmail.com</a>
+        <a href="https://www.linkedin.com/in/mehegab/"><i class="fab fa-linkedin"></i> linkedin.com/in/mehegab</a>
+        <a href="https://maps.app.goo.gl/5LHDmpd8YCEkzkdN6"><i class="fas fa-location-dot"></i> Berlin, Germany</a>
+      </div>
+    </div>
+    <div class="avatar">MH</div>
   </header>
 
-  <!-- Contact bar -->
-  <div class="contact-bar">
-    <a href="tel:+4915758167515">+49 157 58167515</a><span class="sep">|</span><a href="mailto:emad.hegab@gmail.com">emad.hegab@gmail.com</a><span class="sep">|</span><a href="https://www.linkedin.com/in/mehegab/">linkedin.com/in/mehegab</a><span class="sep">|</span><a href="https://maps.app.goo.gl/5LHDmpd8YCEkzkdN6">Berlin, Germany</a>
-  </div>
+  <!-- Two-column body -->
+  <div class="columns">
 
-  <!-- Body -->
-  <div class="main-content">
+    <!-- Left: Experience -->
+    <div class="col-left">
 
-    <section>
-      <h2>Profile</h2>
-      <ul>
-        <li><b>Principal iOS Engineer &amp; Tech Lead</b> with <b>20+ years</b> across mobile and backend</li>
-        <li>Work best where product complexity is high, reliability matters, and teams need clear technical direction</li>
-        <li>Strong focus on iOS architecture, platform evolution, and helping engineers do their best work</li>
-        <li>Applying agentic engineering to streamline developer workflows and accelerate the software delivery lifecycle</li>
-        <li>Pioneered DPoP-based authentication at scale, eliminating token replay vulnerabilities without UX regression</li>
-        <li>Background spans fintech, ecommerce, SaaS, and startups</li>
-        <li>Based in <b>Berlin with German work rights</b>, open to Principal iOS Engineer and Tech Lead roles across Europe</li>
-      </ul>
-    </section>
+      <section>
+        <h2>Experience</h2>
 
-    <section>
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <span class="skill-item">Swift</span>
-        <span class="skill-item">SwiftUI</span>
-        <span class="skill-item">UIKit</span>
-        <span class="skill-item">KMP</span>
-        <span class="skill-item">Agentic engineering</span>
-        <span class="skill-item">CI/CD &amp; automation</span>
-        <span class="skill-item">Fastlane</span>
-        <span class="skill-item">Mobile DevOps</span>
-        <span class="skill-item">MVVM &amp; VIPER</span>
-        <span class="skill-item">Clean Architecture</span>
-        <span class="skill-item">TDD</span>
-        <span class="skill-item">Technical leadership</span>
-        <span class="skill-item">Mentoring &amp; hiring</span>
-        <span class="skill-item">Ruby</span>
-        <span class="skill-item">Bash</span>
-        <span class="skill-item">macOS &amp; Ubuntu</span>
-        <span class="skill-item">REST &amp; GraphQL</span>
-        <span class="skill-item">SDLC</span>
-      </div>
-    </section>
+        <div class="exp-item">
+          <div class="exp-title">Principal iOS Engineer &amp; Tech Lead</div>
+          <div class="exp-meta">
+            <span class="exp-company">Smartbroker</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 12/2023 &ndash; Present</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Berlin</span>
+          </div>
+          <ul>
+            <li>Promoted from iOS Lead to Principal, inheriting a fragmented <b>Core domain</b> with no defined boundaries across iOS, Android, and backend &mdash; established clear ownership and architecture direction through direct code contribution rather than delegation alone.</li>
+            <li>When rising AI-generated code contributions began degrading pipeline quality, designed a proactive merge-candidate quality gate to intercept low-quality code before CI &mdash; reducing production bugs from <b>60 to 5 per month</b> (92% reduction).</li>
+            <li>Existing token-based auth left the <b>Core domain</b> exposed to replay attacks; architected a full authentication and device-binding rewrite using <b>DPoP</b> &mdash; eliminating replay vulnerabilities without UX regression and cutting hosting costs by <b>20%</b>.</li>
+            <li>Core domain bottlenecks were limiting scalability under peak trading load; diagnosed root causes and applied targeted architectural improvements &mdash; delivering a <b>400% increase</b> in concurrent user and transaction capacity.</li>
+            <li>Team had to grow from near-zero to sustain technical ambitions; directly hired <b>5 of 6 engineers</b> and built onboarding programs, growth paths, and technical expectations end-to-end &mdash; creating a self-sustaining engineering culture.</li>
+            <li>Inconsistent standards and unclear QA ownership were inflating defect rates across iOS and Android; introduced coding standards, CI/CD pipelines, release automation, and explicit QA ownership &mdash; reducing code defects by <b>30%</b>.</li>
+            <li>Slow merge cycles and an inconsistent engineering bar were degrading delivery speed; introduced Mobile DevOps practices and raised standards through direct contribution, architecture reviews, and structured mentoring &mdash; decreasing time to merge by <b>40%</b>.</li>
+          </ul>
+        </div>
 
-    <section>
-      <h2>Experience</h2>
+        <div class="exp-item">
+          <div class="exp-title">Mobile Team Lead</div>
+          <div class="exp-meta">
+            <span class="exp-company">Smartbroker</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 04/2022 &ndash; 12/2023</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Berlin</span>
+          </div>
+          <ul>
+            <li>Within the <b>first 8 months</b>, designed and launched a modular mobile platform architecture adopted across both iOS and Android.</li>
+            <li>Established the team&rsquo;s technical foundations, delivery practices, and quality standards with no prior mobile infrastructure in place &mdash; setting up <b>6 Mac-minis on-premise</b> led to daily delivery to QA.</li>
+            <li>Cross-team feature delivery was blocked by missing shared Core domain tooling; led the Core domain and built SDKs adopted by <b>4 internal teams</b>, directly accelerating delivery velocity.</li>
+          </ul>
+        </div>
 
-      <div class="exp-header" style="margin-top:0">
-        <span class="exp-title"><b>Principal iOS Engineer &amp; Tech Lead</b> &middot; Smartbroker, Berlin</span>
-        <span class="exp-date">Dec 2023 &ndash; Present</span>
-      </div>
-      <ul>
-        <li>Promoted from iOS Lead to Principal, inheriting a fragmented <b>Core domain</b> with no defined boundaries across iOS, Android, and backend &mdash; established clear ownership and architecture direction through direct code contribution rather than delegation alone.</li>
-        <li>When rising AI-generated code contributions began degrading pipeline quality, designed a proactive merge-candidate quality gate to intercept low-quality code before CI &mdash; reducing production bugs from <b>60 to 5 per month</b> (92% reduction).</li>
-        <li>Existing token-based auth left the <b>Core domain</b> exposed to replay attacks; architected a full authentication and device-binding rewrite using <b>DPoP</b> &mdash; eliminating replay vulnerabilities without UX regression and cutting hosting costs by <b>20%</b>.</li>
-        <li>Core domain bottlenecks were limiting scalability under peak trading load; diagnosed root causes and applied targeted architectural improvements &mdash; delivering a <b>400% increase</b> in concurrent user and transaction capacity.</li>
-        <li>Team had to grow from near-zero to sustain technical ambitions; directly hired <b>5 of 6 engineers</b> and built onboarding programs, growth paths, and technical expectations end-to-end &mdash; creating a self-sustaining engineering culture.</li>
-        <li>Inconsistent standards and unclear QA ownership were inflating defect rates across iOS and Android; introduced coding standards, CI/CD pipelines, release automation, and explicit QA ownership &mdash; reducing code defects by <b>30%</b>.</li>
-        <li>Slow merge cycles and an inconsistent engineering bar were degrading delivery speed; introduced Mobile DevOps practices and raised standards through direct contribution, architecture reviews, and structured mentoring &mdash; decreasing time to merge by <b>40%</b>.</li>
-      </ul>
+        <div class="exp-item">
+          <div class="exp-title">Lead Mobile Engineer</div>
+          <div class="exp-meta">
+            <span class="exp-company">NA-KD</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 07/2021 &ndash; 03/2022</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Remote</span>
+          </div>
+          <ul>
+            <li>NA-KD had no mobile engineering function; built it from scratch, grew the team to <b>3 engineers</b>, and doubled iOS release cadence from bi-weekly to <b>weekly</b>.</li>
+            <li>Tightly coupled codebase was creating delivery risk; led modularization across <b>13 modules</b> &mdash; completing the rewrite with zero disruption to the <b>weekly release cadence</b>.</li>
+          </ul>
+        </div>
 
-      <div class="exp-header">
-        <span class="exp-title"><b>Mobile Team Lead</b> &middot; Smartbroker, Berlin</span>
-        <span class="exp-date">Apr 2022 &ndash; Dec 2023</span>
-      </div>
-      <ul>
-        <li>Within the <b>first 8 months</b>, Designed and launched a modular mobile platform architecture adopted across both iOS and Android.</li>
-        <li>Established the team&rsquo;s technical foundations, delivery practices, and quality standards with no prior mobile infrastructure in place. by setting up <b>6 Mac-minis on-premise</b> led to daily delivery to QA. </li>
-        <li>Cross-team feature delivery was blocked by missing shared Core domain tooling; led the Core domain and built SDKs adopted by <b>4 internal teams</b>, directly accelerating delivery velocity.</li>
-      </ul>
+        <div class="exp-item">
+          <div class="exp-title">Mobile Team Lead</div>
+          <div class="exp-meta">
+            <span class="exp-company">Verimi</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 01/2020 &ndash; 06/2021</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Berlin</span>
+          </div>
+          <ul>
+            <li>Legacy mobile app generating <b>4 production incidents/month</b>; led full re-architecture across iOS and Android &mdash; dropping incidents to <b>fewer than 1 every 2 months</b>.</li>
+            <li>Systematically eliminated memory leaks and applied lazy-loading optimizations &mdash; cutting crash rate by <b>88%</b> and improving cold-launch time.</li>
+          </ul>
+        </div>
 
-      <div class="exp-header">
-        <span class="exp-title"><b>Lead Mobile Engineer</b> &middot; NA-KD, Remote</span>
-        <span class="exp-date">Jul 2021 &ndash; Mar 2022</span>
-      </div>
-      <ul>
-        <li>NA-KD had no mobile engineering function; built it from scratch, grew the team to <b>3 engineers</b>, and doubled iOS release cadence from bi-weekly to <b>weekly</b>.</li>
-        <li>Tightly coupled codebase was creating delivery risk and slowing feature work; led modularization and refactoring across <b>13 modules</b> &mdash; completing the rewrite with zero disruption to the <b>weekly release cadence</b>.</li>
-      </ul>
+        <div class="exp-item">
+          <div class="exp-title">Senior iOS Developer</div>
+          <div class="exp-meta">
+            <span class="exp-company">Zalando SE</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 01/2019 &ndash; 12/2019</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Berlin</span>
+          </div>
+          <ul>
+            <li>Engineered a custom Go CLI to migrate <b>40 TB of merchant data</b> &mdash; completing the Merchant Platform transition with <b>zero downtime</b>.</li>
+            <li>Navigated cross-functional dependencies across <b>6 internal teams</b> to ship core iOS features &mdash; streamlining workflows that directly impacted seller operations.</li>
+          </ul>
+        </div>
 
-      <div class="exp-header">
-        <span class="exp-title"><b>Mobile Team Lead</b> &middot; Verimi, Berlin</span>
-        <span class="exp-date">Jan 2020 &ndash; Jun 2021</span>
-      </div>
-      <ul>
-        <li>Legacy mobile app with brittle architecture was generating <b>4 production incidents/month</b>; led full re-architecture across iOS and Android &mdash; dropping incidents to <b>fewer than 1 every 2 months</b>.</li>
-        <li>App stability and launch performance were actively hurting retention; systematically eliminated memory leaks and applied lazy-loading optimizations &mdash; cutting crash rate by <b>88%</b> and improving cold-launch time.</li>
-      </ul>
+        <div class="exp-item">
+          <div class="exp-title">iOS &amp; Backend Developer</div>
+          <div class="exp-meta">
+            <span class="exp-company">Zalando SE</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 01/2016 &ndash; 12/2018</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Berlin</span>
+          </div>
+          <ul>
+            <li>Developed Movmnt iOS app and contributed to launching Zalando Beauty in <b>2 months</b>; integrated Keycloak authentication and built PDF services in Scala Play and Spring Boot &mdash; reducing on-call incidents from <b>weekly to once every 3 months</b>.</li>
+          </ul>
+        </div>
 
-      <div class="exp-header">
-        <span class="exp-title"><b>Senior iOS Developer</b> &middot; Zalando SE, Berlin</span>
-        <span class="exp-date">Jan 2019 &ndash; Dec 2019</span>
-      </div>
-      <ul>
-        <li>A major org restructuring required migrating <b>40 TB of merchant data</b> with no service interruption; engineered a custom Go CLI for the migration &mdash; completing the Merchant Platform transition with <b>zero downtime</b>.</li>
-        <li>Merchant feature delivery required alignment across <b>6 internal teams</b> with competing priorities; navigated cross-functional dependencies to ship core iOS features &mdash; streamlining workflows that directly impacted seller operations.</li>
-      </ul>
+        <div class="exp-item">
+          <div class="exp-title">iOS Developer</div>
+          <div class="exp-meta">
+            <span class="exp-company">Shopbox ApS</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 02/2015 &ndash; 12/2015</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Copenhagen</span>
+          </div>
+          <ul>
+            <li>Delivered iOS POS app in <b>3 months</b> (vs 6-month estimate) and grew the customer base from <b>2 to 200 merchants in 10 months</b> through direct customer engagement.</li>
+          </ul>
+        </div>
 
-      <div class="exp-header">
-        <span class="exp-title"><b>iOS &amp; Backend Developer</b> &middot; Zalando SE, Berlin</span>
-        <span class="exp-date">Jan 2016 &ndash; Dec 2018</span>
-      </div>
-      <ul>
-        <li>Developed Movmnt iOS app and contributed to launching Zalando Beauty in <b>2 months</b>; integrated Keycloak authentication and built PDF services in Scala Play and Spring Boot (Kotlin) &mdash; reducing on-call incidents from <b>weekly to once every 3 months</b>.</li>
-      </ul>
+        <div class="exp-item">
+          <div class="exp-title">Various Engineering Roles</div>
+          <div class="exp-meta">
+            <span class="exp-company">Startups &amp; Agencies</span>
+            <span class="exp-detail"><i class="fas fa-calendar-days"></i> 2005 &ndash; 2014</span>
+            <span class="exp-detail"><i class="fas fa-location-dot"></i> Cairo &amp; Remote</span>
+          </div>
+          <ul>
+            <li>Delivered mobile, web, and backend systems for clients including Pfizer, telecom operators, and an enterprise hospital &mdash; mentoring <b>2 junior developers</b> and shipping products across diverse technical domains.</li>
+          </ul>
+        </div>
 
-      <div class="exp-header">
-        <span class="exp-title"><b>iOS Developer</b> &middot; Shopbox ApS, Copenhagen</span>
-        <span class="exp-date">Feb 2015 &ndash; Dec 2015</span>
-      </div>
-      <ul>
-        <li>Product had a <b>6-month delivery estimate</b> and 2 paying customers; delivered the iOS POS app in <b>3 months</b> and, through direct customer engagement, grew the base from <b>2 to 200 merchants in 10 months</b>.</li>
-      </ul>
+      </section>
+    </div>
 
-      <div class="exp-header">
-        <span class="exp-title"><b>Various Engineering Roles</b> &middot; Startups &amp; Agencies, Cairo &amp; Remote</span>
-        <span class="exp-date">2005 &ndash; 2014</span>
-      </div>
-      <ul>
-        <li>Across a decade of startup and agency work, delivered mobile, web, and backend systems for clients including Pfizer, telecom operators, and an enterprise hospital &mdash; mentoring <b>2 junior developers</b> and shipping products across diverse technical domains.</li>
-      </ul>
-    </section>
+    <!-- Right: Summary, Education, Skills -->
+    <div class="col-right">
 
-    <section>
-      <h2>Education</h2>
-      <div class="edu-row">
-        <span class="edu-title">BSc. Computer Science &middot; Cairo University, Egypt</span>
-        <span class="edu-date">Graduated: 2005</span>
-      </div>
-    </section>
+      <section>
+        <h2>Summary</h2>
+        <p>Principal iOS Engineer &amp; Tech Lead with 20+ years across mobile and backend. Work best where product complexity is high, reliability matters, and teams need clear technical direction. Strong focus on iOS architecture, platform evolution, and helping engineers do their best work. Applying agentic engineering to streamline developer workflows and accelerate the software delivery lifecycle. Pioneered DPoP-based authentication at scale, eliminating token replay vulnerabilities without UX regression. Background spans fintech, ecommerce, SaaS, and startups. Based in Berlin with German work rights, open to Principal iOS Engineer and Tech Lead roles across Europe.</p>
+      </section>
 
-    <section class="additional-grid">
-      <div>
+      <section>
+        <h2>Education</h2>
+        <div class="edu-degree">BSc. Computer Science</div>
+        <div class="edu-school">Cairo University</div>
+        <div class="edu-location"><i class="fas fa-location-dot"></i> Egypt</div>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <span class="skill-pill">Swift</span>
+          <span class="skill-pill">SwiftUI</span>
+          <span class="skill-pill">UIKit</span>
+          <span class="skill-pill">KMP</span>
+          <span class="skill-pill">Agentic engineering</span>
+          <span class="skill-pill">CI/CD &amp; automation</span>
+          <span class="skill-pill">Fastlane</span>
+          <span class="skill-pill">Mobile DevOps</span>
+          <span class="skill-pill">MVVM &amp; VIPER</span>
+          <span class="skill-pill">Clean Architecture</span>
+          <span class="skill-pill">TDD</span>
+          <span class="skill-pill">Technical leadership</span>
+          <span class="skill-pill">Mentoring &amp; hiring</span>
+          <span class="skill-pill">Ruby</span>
+          <span class="skill-pill">Bash</span>
+          <span class="skill-pill">macOS &amp; Ubuntu</span>
+          <span class="skill-pill">REST &amp; GraphQL</span>
+          <span class="skill-pill">SDLC</span>
+        </div>
+      </section>
+
+      <section>
         <h2>Languages</h2>
         <ul class="plain-list">
           <li>Arabic (Native)</li>
           <li>English (C1)</li>
           <li>German (B1)</li>
         </ul>
-      </div>
-      <div>
+      </section>
+
+      <section>
         <h2>Citizenships</h2>
         <ul class="plain-list">
           <li>Egyptian</li>
           <li>German</li>
         </ul>
-      </div>
-      <div>
+      </section>
+
+      <section>
         <h2>Projects</h2>
         <ul class="plain-list">
           <li><a href="https://Appsbyhands.com">Apps By Hands</a></li>
           <li><a href="https://Appsbyhands.com/xnox">XNox</a></li>
-          <li><a href="https://github.com/emadhegab">Open Source Contributions</a></li>
+          <li><a href="https://github.com/emadhegab">Open Source</a></li>
         </ul>
-      </div>
-    </section>
+      </section>
 
+    </div>
   </div>
+
 </div>
 
 </body>
