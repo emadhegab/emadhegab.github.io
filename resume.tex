@@ -1,0 +1,275 @@
+% ============================================================
+%  Moe Hegab — Resume
+%  Compile: pdflatex resume.tex  (run twice for correct layout)
+%  All packages are included in MacTeX / TeX Live
+% ============================================================
+\documentclass[10pt,a4paper]{article}
+
+% ---------- geometry ----------
+\usepackage[top=14mm, bottom=14mm, left=14mm, right=14mm]{geometry}
+
+% ---------- font (Helvetica / sans-serif, close to Inter) ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+
+% ---------- color ----------
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{2563EB}      % blue
+\definecolor{darktext}{HTML}{111827}    % near-black
+\definecolor{muted}{HTML}{6B7280}       % gray for meta
+\definecolor{bodytext}{HTML}{374151}    % list text
+\definecolor{pillborder}{HTML}{D1D5DB}  % skill pill border
+\definecolor{pillbg}{HTML}{F9FAFB}      % skill pill bg
+\definecolor{hdrborder}{HTML}{E5E7EB}   % header separator
+
+% ---------- icons ----------
+\usepackage{fontawesome5}
+
+% ---------- hyperlinks ----------
+\usepackage[
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent,
+  hidelinks
+]{hyperref}
+
+% ---------- two-column ----------
+\usepackage{paracol}
+\setlength{\columnsep}{8mm}
+
+% ---------- section headings: UPPERCASE + blue rule below ----------
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\fontsize{8}{10}\selectfont\bfseries\color{darktext}}
+  {}{0pt}{\MakeUppercase}
+  [\vspace{1pt}{\color{accent}\rule{\linewidth}{1.5pt}}\vspace{2pt}]
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+
+% ---------- lists ----------
+\usepackage{enumitem}
+\setlist[itemize]{
+  leftmargin=1.2em,
+  topsep=2pt, itemsep=1pt, parsep=0pt,
+  label=\textbullet,
+  font=\color{bodytext}
+}
+
+% ---------- TikZ for avatar circle ----------
+\usepackage{tikz}
+
+% ---------- tables ----------
+\usepackage{tabularx}
+\usepackage{array}
+
+% ---------- misc ----------
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\color{darktext}
+
+% ============================================================
+%  COMMANDS
+% ============================================================
+
+% skill pill  ─ \skillpill{Swift}
+\newcommand{\skillpill}[1]{%
+  \mbox{%
+    \setlength{\fboxsep}{2.5pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \fcolorbox{pillborder}{pillbg}{%
+      \small\color{darktext}#1%
+    }%
+  }\hspace{3pt}%
+}
+
+% experience entry  ─ \expitem{Title}{Company}{Date}{Location}
+\newcommand{\expitem}[4]{%
+  \vspace{2pt}%
+  {\normalsize\bfseries\color{darktext}#1}\\[1pt]%
+  {\small\bfseries\color{accent}#2}%
+  \enspace{\small\color{muted}\faCalendarAlt\;#3}%
+  \enspace{\small\color{muted}\faMapMarkerAlt\;#4}%
+  \par\vspace{3pt}%
+}
+
+% plain list item (no bullet)
+\newenvironment{plainlist}{%
+  \begin{itemize}[leftmargin=0pt, label={}, topsep=2pt, itemsep=2pt]
+}{%
+  \end{itemize}
+}
+
+% ============================================================
+\begin{document}
+
+% ============================================================
+%  HEADER
+% ============================================================
+\noindent
+\begin{tabularx}{\textwidth}{@{}X@{\hspace{4mm}}r@{}}
+  % ── left ──────────────────────────────────────────────────
+  \begin{minipage}[c]{0.80\linewidth}
+    {\fontsize{20}{24}\selectfont\bfseries\color{accent}%
+      Lead Engineer \textperiodcentered{} Tech Lead}\\[4pt]
+    {\normalsize\bfseries\color{darktext} Moe Hegab}\\[8pt]
+    {\small\color{muted}%
+      \faPhone\;\href{tel:+4915758167515}{+49\,157\,58167515}%
+      \quad
+      \faEnvelope\;\href{mailto:emad.hegab@gmail.com}{emad.hegab@gmail.com}%
+      \quad
+      \faLinkedin\;\href{https://www.linkedin.com/in/mehegab/}{linkedin.com/in/mehegab}%
+      \quad
+      \faMapMarkerAlt\;Berlin, Germany%
+    }
+  \end{minipage}
+  &
+  % ── avatar circle ─────────────────────────────────────────
+  \begin{minipage}[c]{0.12\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \node[circle, fill=accent, text=white,
+            minimum size=52pt, inner sep=0pt,
+            font=\large\bfseries\sffamily] {MH};
+    \end{tikzpicture}
+  \end{minipage}
+\end{tabularx}
+
+% header separator
+\vspace{8pt}
+{\color{hdrborder}\rule{\linewidth}{0.8pt}}
+\vspace{8pt}
+
+% ============================================================
+%  TWO COLUMNS  (left ~57% | right ~43%, matching 1.35fr/1fr)
+% ============================================================
+\columnratio{0.57}
+\begin{paracol}{2}
+
+% ============================================================
+%  LEFT COLUMN — EXPERIENCE
+% ============================================================
+\section{Experience}
+
+\expitem{Tech Lead}{Smartbroker}{12/2023 -- Present}{Berlin}
+\begin{itemize}
+  \item Led technical direction and ownership for the Core domain across 4 platforms --- iOS, Android, Web, and Backend.
+  \item Introduced DPoP authentication and AI-era development guardrails, reducing production defects by \textbf{92\%} and infrastructure costs by \textbf{20\%}.
+  \item Architecture modernization and Mobile DevOps adoption increased capacity by \textbf{4$\times$} and cut merge cycle time by \textbf{40\%}.
+\end{itemize}
+\vspace{5pt}
+
+\expitem{Mobile Team Lead}{Smartbroker}{04/2022 -- 12/2023}{Berlin}
+\begin{itemize}
+  \item Within the \textbf{first 8 months}, designed and launched a modular mobile platform architecture adopted across iOS and Android.
+  \item Established technical foundations with no prior mobile infrastructure --- set up \textbf{6 Mac-minis on-premise}, enabling daily delivery to QA.
+  \item Built Core domain SDKs adopted by \textbf{4 internal teams}, directly accelerating delivery velocity.
+\end{itemize}
+\vspace{5pt}
+
+\expitem{Lead Mobile Engineer}{NA-KD}{07/2021 -- 03/2022}{Remote}
+\begin{itemize}
+  \item Built NA-KD's mobile engineering function from the ground up, growing the team to \textbf{3 engineers}.
+  \item Led modularization of a monolithic codebase into \textbf{13 modules} and doubled release frequency from bi-weekly to \textbf{weekly}.
+\end{itemize}
+\vspace{5pt}
+
+\expitem{Mobile Team Lead}{Verimi}{01/2020 -- 06/2021}{Berlin}
+\begin{itemize}
+  \item Inherited legacy app generating \textbf{4 production incidents/month}; full re-architecture dropped incidents to \textbf{fewer than 1 every 2 months}.
+  \item Eliminated memory leaks and applied lazy-loading optimizations, cutting crash rate by \textbf{88\%}.
+\end{itemize}
+\vspace{5pt}
+
+\expitem{Senior Developer}{Zalando SE}{01/2019 -- 12/2019}{Berlin}
+\begin{itemize}
+  \item Built mobile foundation for Zalando's Merchant Operations 2020 initiative.
+  \item Engineered a custom Go CLI to migrate \textbf{40 TB of merchant data} with \textbf{zero downtime}.
+  \item Coordinated cross-functional dependencies across \textbf{6 internal teams} to ship core iOS features.
+  \item Integrated Keycloak auth and built PDF services (Scala Play, Spring Boot) --- reduced on-call from \textbf{weekly to once every 3 months}.
+\end{itemize}
+\vspace{5pt}
+
+\expitem{iOS Developer}{Zalando SE}{01/2016 -- 12/2018}{Berlin}
+\begin{itemize}
+  \item Developed Movmnt iOS app; contributed to launching Zalando Beauty in \textbf{2 months}.
+\end{itemize}
+\vspace{5pt}
+
+\expitem{iOS Developer}{Shopbox ApS}{02/2015 -- 12/2015}{Copenhagen}
+\begin{itemize}
+  \item Delivered iOS POS app in \textbf{3 months} (vs.\ 6-month estimate); grew customer base from \textbf{2 to 200 merchants in 10 months}.
+\end{itemize}
+\vspace{5pt}
+
+\expitem{Various Engineering Roles}{Startups \& Agencies}{2005 -- 2014}{Cairo \& Remote}
+\begin{itemize}
+  \item Delivered mobile, web, and backend systems for Pfizer, telecom operators, and an enterprise hospital; mentored \textbf{2 junior developers}.
+\end{itemize}
+
+% ============================================================
+%  RIGHT COLUMN
+% ============================================================
+\switchcolumn
+
+\section{Summary}
+{\small\color{bodytext}
+Lead Engineer \& Tech Lead with $\sim$20 years across mobile and backend.
+Work best where product complexity is high, reliability matters, and teams need clear technical direction.
+Strong focus on iOS architecture, platform evolution, and helping engineers do their best work.
+Applying agentic engineering to streamline developer workflows and accelerate SDLC.
+Pioneered DPoP-based authentication at scale.
+Background spans fintech, ecommerce, SaaS, and startups.
+Based in Berlin with German work rights; open to Principal iOS Engineer and Tech Lead roles across Europe.
+}
+
+\section{Education}
+{\normalsize\bfseries\color{darktext} BSc.\ Computer Science}\\[2pt]
+{\small\bfseries\color{accent} Cairo University}\\[2pt]
+{\small\color{muted}\faMapMarkerAlt\;Egypt}
+
+\section{Skills}
+\noindent
+\skillpill{Swift}%
+\skillpill{SwiftUI}%
+\skillpill{UIKit}%
+\skillpill{KMP}%
+\skillpill{Agentic engineering}%
+\skillpill{CI/CD \& automation}%
+\skillpill{Fastlane}%
+\skillpill{Mobile DevOps}%
+\skillpill{MVVM \& VIPER}%
+\skillpill{Clean Architecture}%
+\skillpill{TDD}%
+\skillpill{Technical leadership}%
+\skillpill{Mentoring \& hiring}%
+\skillpill{Ruby}%
+\skillpill{Bash}%
+\skillpill{macOS \& Ubuntu}%
+\skillpill{REST \& GraphQL}%
+\skillpill{SDLC}%
+
+\section{Languages}
+\begin{plainlist}
+  \item {\small\color{bodytext} Arabic --- Native}
+  \item {\small\color{bodytext} English --- C1}
+  \item {\small\color{bodytext} German --- B1}
+\end{plainlist}
+
+\section{Citizenship}
+\begin{plainlist}
+  \item {\small\color{bodytext} Egyptian}
+  \item {\small\color{bodytext} German}
+\end{plainlist}
+
+\section{Projects}
+\begin{plainlist}
+  \item {\small\href{https://appsbyhands.com}{Apps By Hands}}
+  \item {\small\href{https://appsbyhands.com/xnox}{XNox}}
+  \item {\small\href{https://github.com/emadhegab}{Open Source \faGithub}}
+\end{plainlist}
+
+\end{paracol}
+\end{document}
