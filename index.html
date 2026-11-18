@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Moe Hegab</title>
   <meta name="description" content="Moe Hegab, Tech Lead in Berlin. 15+ years building iOS apps, mobile platforms and the teams behind them.">
   <link rel="canonical" href="https://www.hegab.app/">
@@ -11,376 +11,436 @@
   <meta property="og:url" content="https://www.hegab.app/">
   <meta property="og:image" content="https://www.hegab.app/images/moe-hegab.jpg">
   <meta name="theme-color" content="#000000">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --text: #1D1D1F;
-      --muted: #6E6E73;
-      --bg: #FFFFFF;
-      --bg-alt: #F5F5F7;
-      --tile: #FFFFFF;
-      --link: #0066CC;
+      --bg: #F2F2F7; --card: #FFFFFF; --text: #000000; --muted: #8E8E93;
+      --sep: rgba(60, 60, 67, .18); --link: #007AFF;
       --warm: linear-gradient(90deg, #FF9F0A 0%, #FF375F 55%, #BF5AF2 100%);
-      --cool: linear-gradient(90deg, #64D2FF 0%, #0A84FF 50%, #5E5CE6 100%);
-      --radius: 28px;
+      --ease: cubic-bezier(.2, .9, .25, 1);
     }
     @media (prefers-color-scheme: dark) {
-      :root {
-        --text: #F5F5F7;
-        --muted: #A1A1A6;
-        --bg: #000000;
-        --bg-alt: #101012;
-        --tile: #1C1C1E;
-        --link: #2997FF;
-      }
+      :root { --bg: #000000; --card: #1C1C1E; --text: #FFFFFF; --sep: rgba(84, 84, 88, .6); --link: #0A84FF; }
     }
 
-    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
-      font-size: 17px; line-height: 1.47; letter-spacing: -.022em;
-      background: var(--bg); color: var(--text);
-      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh; display: grid; place-items: center;
+      background: radial-gradient(60% 50% at 50% 50%, #2a1b3d 0%, #0b0b0f 70%);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      font-size: 17px; line-height: 1.4; letter-spacing: -.02em; -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", sans-serif; }
     a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
-    .more::after { content: " ›"; }
-    .grad-warm, .grad-cool { -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .grad-warm { background-image: var(--warm); }
-    .grad-cool { background-image: var(--cool); }
 
-    /* ─── Global nav (frosted) ─────────────── */
-    .gnav {
-      position: sticky; top: 0; z-index: 50; height: 48px;
-      background: rgba(22, 22, 23, .72);
-      backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+    /* ─── Device ───────────────────────────── */
+    .phone {
+      position: relative; height: min(844px, calc(100dvh - 48px)); aspect-ratio: 390 / 844;
+      padding: 12px; border-radius: 60px; background: #111;
+      box-shadow: 0 0 0 2px #3a3a3c, 0 0 0 5px #1d1d1f, 0 40px 120px rgba(0, 0, 0, .7);
     }
-    .gnav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .gnav a { color: rgba(255, 255, 255, .8); font-size: 12px; letter-spacing: -.01em; }
-    .gnav a:hover { color: #fff; text-decoration: none; }
-    .gnav .brand { font-size: 14px; font-weight: 600; color: #fff; }
-    .gnav nav { display: flex; gap: 28px; }
-
-    /* ─── Hero ─────────────────────────────── */
-    .hero { background: #000; color: #F5F5F7; text-align: center; padding: 88px 0 0; overflow: hidden; }
-    .hero .eyebrow { font-size: 21px; font-weight: 600; color: #86868B; letter-spacing: .004em; }
-    .hero h1 { font-size: clamp(56px, 11vw, 112px); font-weight: 700; letter-spacing: -.045em; line-height: 1.02; margin: 6px 0 10px; }
-    .hero .tagline { font-size: clamp(26px, 4.4vw, 44px); font-weight: 600; letter-spacing: -.03em; line-height: 1.1; }
-    .hero .links { display: flex; justify-content: center; gap: 32px; margin: 28px 0 56px; font-size: 19px; }
-    .hero .links a { color: #2997FF; }
-    .portrait { position: relative; width: min(420px, 78vw); margin: 0 auto; }
-    .portrait::before {
-      content: ""; position: absolute; inset: 12% -18% -10%; z-index: 0;
-      background: var(--warm); filter: blur(70px); opacity: .45; border-radius: 50%;
+    .screen {
+      position: relative; height: 100%; overflow: hidden; border-radius: 48px; color: #fff;
+      container-type: inline-size; user-select: none; -webkit-user-select: none;
+      background:
+        radial-gradient(120% 70% at 0% 0%, #FF9F0A 0%, transparent 60%),
+        radial-gradient(100% 70% at 100% 35%, #BF5AF2 0%, transparent 60%),
+        radial-gradient(120% 80% at 20% 100%, #FF375F 0%, transparent 60%),
+        #2a1240;
     }
-    .portrait img { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 44px 44px 0 0; }
-
-    /* ─── Sections ─────────────────────────── */
-    section { padding: 112px 0; }
-    .alt { background: var(--bg-alt); }
-    .section-head { margin-bottom: 48px; }
-    .section-head h2 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -.04em; line-height: 1.05; }
-    .section-head p { font-size: 21px; color: var(--muted); margin-top: 12px; max-width: 640px; font-weight: 500; }
-
-    .intro-copy { font-size: clamp(24px, 3.4vw, 34px); font-weight: 600; line-height: 1.25; letter-spacing: -.03em; color: var(--muted); max-width: 900px; }
-    .intro-copy strong { color: var(--text); font-weight: 600; }
-
-    /* ─── Bento ────────────────────────────── */
-    .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
-    .tile { background: var(--tile); border-radius: var(--radius); padding: 36px; display: flex; flex-direction: column; gap: 12px; min-height: 280px; overflow: hidden; }
-    .tile.dark { background: #000; color: #F5F5F7; }
-    .tile .kicker { font-size: 14px; font-weight: 600; color: var(--muted); }
-    .tile.dark .kicker { color: #86868B; }
-    .tile h3 { font-size: 28px; font-weight: 700; letter-spacing: -.03em; line-height: 1.12; }
-    .tile p { color: var(--muted); }
-    .tile.dark p { color: #A1A1A6; }
-    .span-6 { grid-column: span 6; }
-    .tools { display: flex; flex-wrap: wrap; gap: 4px 22px; list-style: none; margin-top: 20px; font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; letter-spacing: -.035em; line-height: 1.2; color: #48484A; }
-
-    /* ─── Work gallery (horizontal) ───────── */
-    .gallery { display: grid; grid-auto-flow: column; grid-auto-columns: min(360px, 82vw); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(22px, calc((100vw - 1024px) / 2 + 22px)); padding: 4px max(22px, calc((100vw - 1024px) / 2 + 22px)) 28px; scrollbar-width: none; }
-    .gallery::-webkit-scrollbar { display: none; }
-    .job { scroll-snap-align: start; background: var(--bg-alt); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 10px; min-height: 380px; }
-    .job .logo { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; box-shadow: 0 0 0 1px rgba(0, 0, 0, .06); background: #fff; }
-    .job .logo.blank { display: grid; place-items: center; font-size: 26px; background: var(--tile); box-shadow: none; }
-    .job .years { font-size: 14px; font-weight: 600; color: var(--muted); margin-top: 16px; }
-    .job .years.now { background-image: var(--warm); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .job h3 { font-size: 32px; font-weight: 700; letter-spacing: -.035em; line-height: 1.05; }
-    .job .role { font-weight: 600; }
-    .job p { color: var(--muted); margin-top: auto; }
-    .gallery-foot { display: flex; justify-content: space-between; align-items: center; }
-    .hint { color: var(--muted); font-size: 14px; }
-
-    /* ─── Projects ─────────────────────────── */
-    .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .project { background: var(--tile); border-radius: var(--radius); padding: 40px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; color: var(--text); transition: transform .3s cubic-bezier(.2, .8, .2, 1); }
-    .project:hover { text-decoration: none; transform: scale(1.015); }
-    .project .icon { width: 84px; height: 84px; border-radius: 20px; object-fit: cover; box-shadow: 0 8px 24px rgba(0, 0, 0, .15); }
-    .project .icon.gh { display: grid; place-items: center; background: #000; color: #fff; }
-    .project .icon.gh svg { width: 44px; height: 44px; }
-    .project h3 { font-size: 32px; font-weight: 700; letter-spacing: -.035em; }
-    .project p { color: var(--muted); }
-    .project .more { color: var(--link); margin-top: auto; }
-
-    button.project { font: inherit; letter-spacing: inherit; text-align: left; border: 0; cursor: pointer; }
-
-    /* ─── Storiapod sheet (glass) ──────────── */
-    .sheet {
-      margin: auto; width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 48px);
-      padding: 48px 40px 40px; border: 0; border-radius: 32px; text-align: center; color: var(--text);
-      background: color-mix(in srgb, var(--tile) 72%, transparent);
-      backdrop-filter: saturate(180%) blur(40px); -webkit-backdrop-filter: saturate(180%) blur(40px);
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, .25) inset, 0 30px 80px rgba(0, 0, 0, .35);
-      transition: opacity .35s, transform .35s cubic-bezier(.2, .8, .2, 1), overlay .35s allow-discrete, display .35s allow-discrete;
-      opacity: 0; transform: scale(.94) translateY(16px);
+    .island { position: absolute; z-index: 40; top: 11px; left: 50%; translate: -50% 0; width: 31cqw; height: 34px; border-radius: 20px; background: #000; }
+    .status {
+      position: relative; z-index: 30; height: 54px; padding: 18px 8cqw 0;
+      display: flex; justify-content: space-between; font-size: 16px; font-weight: 600; transition: color .3s;
     }
-    .sheet[open] { opacity: 1; transform: none; }
-    @starting-style { .sheet[open] { opacity: 0; transform: scale(.94) translateY(16px); } }
-    .sheet::backdrop {
-      background: rgba(0, 0, 0, .25);
-      backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%);
-      transition: opacity .35s, overlay .35s allow-discrete, display .35s allow-discrete; opacity: 0;
-    }
-    .sheet[open]::backdrop { opacity: 1; }
-    @starting-style { .sheet[open]::backdrop { opacity: 0; } }
-    .sheet .close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border: 0; border-radius: 50%; cursor: pointer; background: rgba(120, 120, 128, .2); color: var(--muted); font-size: 14px; }
-    .sheet-icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 12px 32px rgba(0, 0, 0, .25); }
-    .sheet h2 { font-size: 40px; font-weight: 700; letter-spacing: -.04em; margin-top: 20px; }
-    .sheet-sub { color: var(--muted); font-weight: 500; }
-    .sheet-body { text-align: left; margin: 28px 0 24px; display: grid; gap: 14px; font-size: 17px; color: var(--muted); }
-    .sheet-body strong { color: var(--text); font-weight: 600; }
-    .sheet-stack { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 28px; }
-    .sheet-stack li { font-size: 14px; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: rgba(120, 120, 128, .14); }
+    .status svg { height: 12px; fill: currentColor; }
 
-    /* ─── Closing ──────────────────────────── */
-    .closing { background: #000; color: #F5F5F7; text-align: center; }
-    .closing h2 { font-size: clamp(44px, 8vw, 80px); font-weight: 700; letter-spacing: -.045em; line-height: 1.03; }
-    .closing p { color: #86868B; font-size: 21px; font-weight: 500; margin: 16px auto 32px; max-width: 560px; }
-    .pill { display: inline-block; background: #0071E3; color: #fff; padding: 12px 24px; border-radius: 999px; }
-    .pill:hover { background: #0077ED; text-decoration: none; }
-    .closing .links { display: flex; justify-content: center; gap: 28px; margin-top: 24px; }
-    .closing .links a { color: #2997FF; }
-
-    footer { background: var(--bg-alt); color: var(--muted); font-size: 12px; padding: 20px 0 28px; }
-    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    footer a { color: var(--text); }
-    .facts { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 20px; }
-
-    /* ─── Scroll reveal (pure CSS, where supported) ── */
-    @supports (animation-timeline: view()) {
-      @media (prefers-reduced-motion: no-preference) {
-        .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
-        @keyframes rise { from { opacity: 0; transform: translateY(48px) scale(.98); } }
-      }
+    /* ─── Home screen ──────────────────────── */
+    .home { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5.5cqw 4cqw; padding: 3cqw 6cqw; align-items: start; }
+    .icon { display: flex; flex-direction: column; align-items: center; gap: 6px; color: #fff; font-size: 11.5px; text-shadow: 0 1px 2px rgba(0, 0, 0, .3); border-radius: 16px; }
+    .icon i, .icon img {
+      width: 15.5cqw; aspect-ratio: 1; border-radius: 22.5%; display: grid; place-items: center;
+      font-size: 8cqw; font-style: normal; color: #fff; text-shadow: none; box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+      transition: transform .2s;
     }
+    .icon:active i, .icon:active img { transform: scale(.9); }
+    .icon svg { width: 9cqw; fill: currentColor; }
 
-    @media (max-width: 820px) {
-      .bento { grid-template-columns: 1fr; }
-      .span-6 { grid-column: auto; }
-      .tile { min-height: 0; padding: 28px; }
-      .projects { grid-template-columns: 1fr; }
-      section { padding: 80px 0; }
-      .gnav nav { gap: 18px; }
-      .hint { display: none; }
+    .widget {
+      grid-column: span 4; border-radius: 22px; padding: 16px; color: #fff;
+      background: rgba(255, 255, 255, .18); backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%);
+      display: flex; align-items: center; gap: 14px;
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .project, .sheet, .sheet::backdrop { transition: none; }
+    .widget img { width: 22cqw; aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
+    .widget b { display: block; font-size: 22px; letter-spacing: -.03em; }
+    .widget small { font-size: 13px; opacity: .85; }
+    .widget.sm { grid-column: span 2; grid-row: span 2; align-self: stretch; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .widget.sm img { width: 10cqw; border-radius: 22.5%; margin-bottom: auto; }
+    .widget.sm b { font-size: 17px; }
+    .widget.sm > * { transition: opacity .3s, translate .3s; }
+    .widget.sm.fade > * { opacity: 0; translate: 0 6px; }
+    .kicker { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--warm); -webkit-background-clip: text; background-clip: text; color: transparent; filter: brightness(1.6); }
+
+    .dots { position: absolute; bottom: calc(18cqw + 44px); left: 50%; translate: -50% 0; display: flex; gap: 8px; }
+    .dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, .4); }
+    .dots span:first-child { background: #fff; }
+    .dock {
+      position: absolute; left: 3cqw; right: 3cqw; bottom: 26px; padding: 4cqw 4.5cqw; border-radius: 34px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: rgba(255, 255, 255, .2); backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%);
     }
+    .dock .icon span { display: none; }
+
+    .indicator { position: absolute; z-index: 30; bottom: 8px; left: 50%; translate: -50% 0; width: 35%; height: 5px; border-radius: 3px; background: #fff; transition: background .3s; }
+    .indicator::before { content: ""; position: absolute; inset: -20px -20% -8px; }
+    .indicator { touch-action: none; }
+
+    /* ─── Apps ─────────────────────────────── */
+    .app {
+      position: absolute; inset: 0; z-index: 20; overflow-y: auto; scrollbar-width: none;
+      padding: 54px 16px 44px; background: var(--bg); color: var(--text);
+      opacity: 0; visibility: hidden; transform: scale(.15); border-radius: 48px;
+      transition: transform .45s var(--ease), opacity .25s, visibility .45s, border-radius .45s;
+    }
+    .app.open { opacity: 1; visibility: visible; transform: none; border-radius: 0; }
+    .screen:has(.app.open) .status { color: var(--text); }
+    .screen:has(.app.open) .indicator { background: var(--text); }
+
+    .back { display: inline-block; padding: 6px 0; font-size: 17px; }
+    .back::before { content: "‹ "; font-size: 22px; line-height: 0; }
+    .app h1 { font-size: 34px; font-weight: 700; letter-spacing: -.03em; margin: 4px 4px 16px; }
+    .app p { color: var(--muted); margin-bottom: 12px; }
+    .app p strong { color: var(--text); font-weight: 600; }
+    .group { background: var(--card); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+    .group > * + * { border-top: .5px solid var(--sep); }
+    .row { display: flex; align-items: center; gap: 12px; padding: 11px 16px; min-height: 44px; }
+    .row .val { margin-left: auto; color: var(--muted); text-align: right; }
+    details summary { list-style: none; cursor: pointer; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "›"; margin-left: auto; color: var(--muted); font-size: 22px; transition: rotate .2s; }
+    details[open] summary::after { rotate: 90deg; }
+    details p { padding: 0 16px 4px 64px; font-size: 15px; }
+    .logo { width: 36px; height: 36px; border-radius: 9px; object-fit: cover; background: #fff; color: #000; flex: none; display: grid; place-items: center; }
+    .row b { display: block; font-weight: 600; }
+    .row small { color: var(--muted); font-size: 13px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; list-style: none; }
+    .chips li { padding: 6px 14px; border-radius: 999px; background: var(--card); font-size: 15px; font-weight: 500; }
+    .chips.hot li { background: var(--warm); color: #fff; }
+    .btn { display: block; text-align: center; padding: 14px; border-radius: 14px; background: var(--link); color: #fff; font-weight: 600; margin-top: 8px; }
+    .center { text-align: center; }
+    .app-hero { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 12px 32px rgba(0, 0, 0, .25); margin: 16px auto 0; display: block; }
+
+    .notes { background: #FFF9E5; } .notes .back { color: #D9A400; }
+    @media (prefers-color-scheme: dark) { .notes { background: #1C1C1E; } .notes .back { color: #FFD60A; } }
+    .notes p { color: var(--text); font-size: 18px; }
+
+    .thread { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+    .bubble { max-width: 78%; padding: 8px 14px; border-radius: 20px; background: var(--card); align-self: flex-start; }
+    .bubble.me { align-self: flex-end; background: #34C759; color: #fff; }
+    .typing { color: var(--muted); font-size: 12px; margin: 6px 4px; }
+    .compose { display: flex; gap: 8px; align-items: center; margin-top: 24px; padding: 8px 8px 8px 16px; border-radius: 22px; border: 1px solid var(--sep); color: var(--muted); }
+    .compose span { flex: 1; }
+    .compose a { width: 30px; height: 30px; border-radius: 50%; background: var(--link); color: #fff; display: grid; place-items: center; font-weight: 700; }
+
+    /* ─── Safari (SFSafariViewController vibes) ── */
+    .sbar { display: flex; align-items: center; gap: 12px; padding: 4px 0 10px; }
+    .sbar .done { font-weight: 600; }
+    .addr { flex: 1; text-align: center; padding: 8px; border-radius: 12px; background: var(--card); font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .aa { color: var(--link); font-size: 15px; font-weight: 600; }
+    .load { height: 3px; margin: 0 -16px; width: 0; background: var(--link); }
+    .safari.open .load { animation: load .8s ease-out forwards; }
+    @keyframes load { 90% { width: calc(100% + 32px); opacity: 1; } 100% { width: calc(100% + 32px); opacity: 0; } }
+    .safari { display: flex; flex-direction: column; padding-bottom: 0; }
+    .safari .page { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; margin: 0 -16px; padding: 24px 16px 44px; }
+    .safari .page.frame { padding: 0; }
+    .safari iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+    .safari.open .page { animation: show .3s .7s both; }
+    @keyframes show { from { opacity: 0; translate: 0 8px; } }
+    .safari .globe { font-size: 64px; margin-top: 24px; }
+    .safari .wink { font-size: 14px; margin-top: 24px; }
+    .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px; }
+    .safari .group .row small { display: block; }
+    .stats { font-size: 15px; } .stats b { color: var(--text); }
+    .li-banner { height: 96px; margin: -24px -16px 0; background: linear-gradient(135deg, #0A66C2, #5E5CE6); }
+    .li .avatar { margin: -48px 0 12px; border: 4px solid var(--bg); }
+    .li h1 { margin: 0; }
+    .li h2 { font-size: 20px; margin: 24px 0 10px; }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 999px; background: #34C759; color: #fff; font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+
+    /* ─── Real phones: drop the frame ─────── */
+    @media (max-width: 500px) {
+      body { background: #000; }
+      .phone { height: 100dvh; width: 100vw; aspect-ratio: auto; padding: 0; border-radius: 0; box-shadow: none; }
+      .screen { border-radius: 0; }
+      .island { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .app { transition: opacity .2s, visibility .2s; transform: none; } }
   </style>
 </head>
 <body>
 
-<header class="gnav">
-  <div class="wrap">
-    <a class="brand" href="#">Moe Hegab</a>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#projects">Projects</a>
-      <a href="resume.html">Resume</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-  <!-- Hero -->
-  <div class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Tech Lead · Berlin</p>
-      <h1>Moe Hegab.</h1>
-      <p class="tagline"><span class="grad-warm">iOS at heart.</span> Platforms in mind.</p>
-      <div class="links">
-        <a class="more" href="mailto:emad.hegab@gmail.com">Say hello</a>
-        <a class="more" href="resume.html">Read the resume</a>
-      </div>
+<div class="phone">
+  <div class="screen">
+    <div class="island" aria-hidden="true"></div>
+    <div class="status" aria-hidden="true">
+      <span id="clock">9:41</span>
+      <span>
+        <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2.5" width="3" height="9.5" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+        <svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="19" height="8" rx="1.8"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+      </span>
     </div>
-    <div class="portrait"><img src="images/moe-hegab.jpg" alt="Moe Hegab" width="420" height="420" fetchpriority="high"></div>
-  </div>
 
-  <!-- Intro -->
-  <section>
-    <div class="wrap">
-      <p class="intro-copy reveal">
-        Twenty years of shipping software, from Cairo to Copenhagen to Berlin.
-        <strong>Most of it on iOS.</strong> These days I lead the Core domain at Smartbroker
-        across iOS, Android, Web and Backend, and <strong>I still care about every build that goes out.</strong>
-      </p>
-    </div>
-  </section>
-
-  <!-- Craft (bento) -->
-  <section id="craft" class="alt">
-    <div class="wrap">
-      <div class="bento">
-        <div class="tile dark span-6 reveal">
-          <span class="kicker">Toolbox</span>
-          <h3>Swift, top to bottom.</h3>
-          <p>The Apple stack every day, and whatever else the job needs.</p>
-          <ul class="tools">
-            <li class="grad-warm">Swift</li><li class="grad-warm">SwiftUI</li><li class="grad-warm">UIKit</li><li class="grad-warm">Combine</li>
-            <li class="grad-cool">Xcode</li><li class="grad-cool">Fastlane</li><li class="grad-cool">CI/CD</li>
-            <li>Core Data</li><li>Objective-C</li><li>Kotlin Multiplatform</li><li>Go</li><li>Ruby</li><li>Bash</li>
-          </ul>
+    <!-- Home screen -->
+    <main class="home">
+      <a class="widget" href="#about">
+        <img src="images/moe-hegab.jpg" alt="">
+        <div>
+          <span class="kicker">Tech Lead · Berlin</span>
+          <b>Moe Hegab</b>
+          <small>iOS at heart. Platforms in mind.</small>
         </div>
-      </div>
-    </div>
-  </section>
+      </a>
 
-  <!-- Work -->
-  <section id="work">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2>Where I've worked.</h2>
-        <p>Fintech, identity, fashion and retail.</p>
-      </div>
-    </div>
-    <div class="gallery">
-      <article class="job">
-        <img class="logo" src="images/logos/smartbroker.png" alt="">
-        <span class="years now">2022 – now</span>
-        <h3>Smartbroker</h3>
-        <span class="role">Tech Lead, before that Mobile Team Lead</span>
-        <p>Built the mobile team from nothing, then took over the Core domain across four platforms.</p>
-      </article>
-      <article class="job">
-        <img class="logo" src="images/logos/na-kd.png" alt="">
-        <span class="years">2021 – 2022</span>
-        <h3>NA-KD</h3>
-        <span class="role">Lead Mobile Engineer</span>
-        <p>Set up mobile engineering, went modular, and moved to weekly releases.</p>
-      </article>
-      <article class="job">
-        <img class="logo" src="images/logos/verimi.png" alt="">
-        <span class="years">2020 – 2021</span>
-        <h3>Verimi</h3>
-        <span class="role">Mobile Team Lead</span>
-        <p>Rebuilt a legacy app. Incidents went from four a month to fewer than one every two months.</p>
-      </article>
-      <article class="job">
-        <img class="logo" src="images/logos/zalando.png" alt="">
-        <span class="years">2016 – 2019</span>
-        <h3>Zalando</h3>
-        <span class="role">iOS Developer, then Senior Developer</span>
-        <p>Movmnt, Zalando Beauty, then merchant tooling, including a Go CLI that moved 40 TB without downtime.</p>
-      </article>
-      <article class="job">
-        <img class="logo" src="images/logos/shopbox.png" alt="">
-        <span class="years">2015</span>
-        <h3>Shopbox</h3>
-        <span class="role">iOS Developer · Copenhagen</span>
-        <p>A point-of-sale iOS app in 3 months, then growth from 2 to 200 merchants.</p>
-      </article>
-      <article class="job">
-        <span class="logo blank" aria-hidden="true">✦</span>
-        <span class="years">2005 – 2014</span>
-        <h3>Startups and agencies</h3>
-        <span class="role">Cairo and remote</span>
-        <p>Mobile, web and backend work for all kinds of clients.</p>
-      </article>
-    </div>
-    <div class="wrap gallery-foot">
-      <a class="more" href="resume.html">See the full resume</a>
-      <span class="hint">Scroll sideways →</span>
-    </div>
-  </section>
+      <a class="widget sm" id="career" href="#work">
+        <img src="images/logos/smartbroker.png" alt="">
+        <span class="kicker">Now</span>
+        <b>Smartbroker</b>
+        <small>Tech Lead · 2022 – now</small>
+      </a>
+      <a class="icon" href="#work"><i style="background:linear-gradient(#5AC8FA,#007AFF)">💼</i><span>Work</span></a>
+      <a class="icon" href="#storiapod"><img src="images/logos/storiapod.png" alt=""><span>Storiapod</span></a>
+      <a class="icon" href="#toolbox"><i style="background:linear-gradient(#8E8E93,#3A3A3C)">🛠️</i><span>Toolbox</span></a>
+      <a class="icon" href="#about"><i style="background:linear-gradient(#FFF,#F2F2F7)">📝</i><span>Notes</span></a>
 
-  <!-- Projects -->
-  <section id="projects" class="alt">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2>After hours.</h2>
-      </div>
-      <div class="projects">
-        <button class="project reveal" type="button" onclick="document.getElementById('storiapod').showModal()">
-          <img class="icon" src="images/logos/storiapod.png" alt="">
-          <h3>Storiapod</h3>
-          <p>Arabic audio stories and drama, built end to end.</p>
-          <span class="more">Read the story</span>
-        </button>
-        <a class="project reveal" href="https://github.com/emadhegab">
-          <span class="icon gh"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
-          <h3>Open source</h3>
-          <p>Libraries, tools and experiments.</p>
-          <span class="more">github.com/emadhegab</span>
-        </a>
-      </div>
-    </div>
-  </section>
+      <a class="icon" href="https://github.com/emadhegab"><i style="background:#000"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></i><span>GitHub</span></a>
+      <a class="icon" href="https://www.linkedin.com/in/mehegab/"><i style="background:#0A66C2;font-weight:700;font-family:Helvetica,Arial,sans-serif">in</i><span>LinkedIn</span></a>
+      <a class="icon" href="#settings"><i style="background:linear-gradient(#AEAEB2,#636366)">⚙️</i><span>Settings</span></a>
+      <a class="icon" href="Moe_Hegab_Resume.pdf"><i style="background:linear-gradient(#5AC8FA,#0A84FF)">📁</i><span>Files</span></a>
+    </main>
 
-  <!-- Closing -->
-  <section class="closing">
-    <div class="wrap reveal">
-      <h2>Let's build<br><span class="grad-warm">something good.</span></h2>
-      <p>Open to Tech Lead and Principal iOS Engineer roles across Europe.</p>
-      <a class="pill" href="mailto:emad.hegab@gmail.com">Get in touch</a>
-      <div class="links">
-        <a class="more" href="https://www.linkedin.com/in/mehegab/">LinkedIn</a>
-        <a class="more" href="Moe_Hegab_Resume.pdf">Download PDF</a>
+    <div class="dots" aria-hidden="true"><span></span><span></span></div>
+    <nav class="dock">
+      <a class="icon" href="#messages"><i style="background:linear-gradient(#5BF675,#0CBD2A)">💬</i><span>Messages</span></a>
+      <a class="icon" href="mailto:emad.hegab@gmail.com"><i style="background:linear-gradient(#1A9BFF,#0A65E0)">✉️</i><span>Mail</span></a>
+      <a class="icon" href="classic.html"><i style="background:linear-gradient(#FFF,#E5E5EA)">🧭</i><span>Classic site</span></a>
+      <a class="icon" href="resume.html" data-safari><i style="background:linear-gradient(#FF6B5E,#FF3B30)">📄</i><span>Resume</span></a>
+    </nav>
+
+    <!-- Apps -->
+    <section class="app" data-app="work">
+      <a class="back" href="#">Home</a>
+      <h1>Where I've worked</h1>
+      <div class="group">
+        <details><summary class="row"><img class="logo" src="images/logos/smartbroker.png" alt=""><div><b>Smartbroker</b><small>Tech Lead · 2022 – now</small></div></summary>
+          <p>Built the mobile team from nothing, then took over the Core domain across iOS, Android, Web and Backend.</p></details>
+        <details><summary class="row"><img class="logo" src="images/logos/na-kd.png" alt=""><div><b>NA-KD</b><small>Lead Mobile Engineer · 2021 – 2022</small></div></summary>
+          <p>Set up mobile engineering, went modular, and moved to weekly releases.</p></details>
+        <details><summary class="row"><img class="logo" src="images/logos/verimi.png" alt=""><div><b>Verimi</b><small>Mobile Team Lead · 2020 – 2021</small></div></summary>
+          <p>Rebuilt a legacy app. Incidents went from four a month to fewer than one every two months.</p></details>
+        <details><summary class="row"><img class="logo" src="images/logos/zalando.png" alt=""><div><b>Zalando</b><small>Senior Developer · 2016 – 2019</small></div></summary>
+          <p>Movmnt, Zalando Beauty, then merchant tooling, including a Go CLI that moved 40 TB without downtime.</p></details>
+        <details><summary class="row"><img class="logo" src="images/logos/shopbox.png" alt=""><div><b>Shopbox</b><small>iOS Developer · 2015</small></div></summary>
+          <p>A point-of-sale iOS app in 3 months, then growth from 2 to 200 merchants.</p></details>
+        <details><summary class="row"><span class="logo">✦</span><div><b>Startups and agencies</b><small>Cairo and remote · 2005 – 2014</small></div></summary>
+          <p>Mobile, web and backend work for all kinds of clients.</p></details>
       </div>
-    </div>
-  </section>
+      <a class="btn" href="resume.html" data-safari>See the full resume</a>
+    </section>
 
-</main>
+    <section class="app" data-app="storiapod">
+      <a class="back" href="#">Home</a>
+      <div class="center">
+        <img class="app-hero" src="images/logos/storiapod.png" alt="">
+        <h1>Storiapod</h1>
+        <p>ستوريا بود · Arabic audio stories and drama</p>
+      </div>
+      <p>Storiapod grew out of a long-standing friendship. <strong>Kareem Kandil</strong>, founder of Storia Pod GmbH, had envisioned building his own app for years.</p>
+      <p>Once the right technology and the right motivation came together, I committed fully to turning that vision into a product, and I lead its engineering end to end: native iOS and Android apps on a shared Kotlin Multiplatform core, backed by a Rails platform.</p>
+      <p>Following a successful launch, Storiapod now serves <strong>10,000 users and growing</strong>, with one mission: not only to tell the story, but to put the listener inside it.</p>
+      <ul class="chips"><li>SwiftUI</li><li>Jetpack Compose</li><li>Kotlin Multiplatform</li><li>Rails</li></ul>
+      <a class="btn" href="https://storiapod.com">Visit storiapod.com</a>
+    </section>
 
-<dialog id="storiapod" class="sheet" aria-labelledby="storiapod-title" onclick="if (event.target === this) this.close()">
-  <form method="dialog"><button class="close" aria-label="Close">✕</button></form>
-  <img class="sheet-icon" src="images/logos/storiapod.png" alt="" width="96" height="96">
-  <h2 id="storiapod-title">Storiapod</h2>
-  <p class="sheet-sub">ستوريا بود · Arabic audio stories and drama</p>
-  <div class="sheet-body">
-    <p>
-      Storiapod grew out of a long-standing friendship. <strong>Kareem Kandil</strong>, founder of
-      Storia Pod GmbH, had envisioned building his own app for years.
-    </p>
-    <p>
-      Once the right technology and the right motivation came together, I committed fully to
-      turning that vision into a product, and I lead its engineering end to end: native iOS and
-      Android apps on a shared Kotlin Multiplatform core, backed by a Rails platform.
-    </p>
-    <p>
-      Following a successful launch, Storiapod now serves <strong>10,000 users and growing</strong>,
-      with one mission: not only to tell the story, but to put the listener inside it.
-    </p>
+    <section class="app" data-app="toolbox">
+      <a class="back" href="#">Home</a>
+      <h1>Swift, top to bottom.</h1>
+      <p>The Apple stack every day, and whatever else the job needs.</p>
+      <ul class="chips hot"><li>Swift</li><li>SwiftUI</li><li>UIKit</li><li>Combine</li><li>Xcode</li><li>Fastlane</li><li>CI/CD</li></ul>
+      <ul class="chips"><li>Core Data</li><li>Objective-C</li><li>Kotlin Multiplatform</li><li>Go</li><li>Ruby</li><li>Bash</li></ul>
+    </section>
+
+    <section class="app notes" data-app="about">
+      <a class="back" href="#">Notes</a>
+      <h1>About me</h1>
+      <p>Twenty years of shipping software, from Cairo to Copenhagen to Berlin.</p>
+      <p><strong>Most of it on iOS.</strong> These days I lead the Core domain at Smartbroker across iOS, Android, Web and Backend, and I still care about every build that goes out.</p>
+    </section>
+
+    <section class="app" data-app="settings">
+      <a class="back" href="#">Home</a>
+      <h1>About</h1>
+      <div class="group">
+        <div class="row">Name<span class="val">Moe Hegab</span></div>
+        <div class="row">Role<span class="val">Tech Lead</span></div>
+        <div class="row">Location<span class="val">Berlin</span></div>
+        <div class="row">Education<span class="val">BSc Computer Science, Cairo University</span></div>
+        <div class="row">Languages<span class="val">Arabic · English · German (B1)</span></div>
+        <div class="row">Version<span class="val">2026 (20 years of builds)</span></div>
+      </div>
+      <div class="group">
+        <a class="row" href="Moe_Hegab_Resume.pdf">Download resume (PDF)</a>
+        <a class="row" href="classic.html">Open classic site</a>
+      </div>
+    </section>
+
+    <section class="app" data-app="messages">
+      <a class="back" href="#">Messages</a>
+      <h1 class="center">Moe</h1>
+      <div class="thread">
+        <div class="bubble me">Hi Moe 👋 are you open to new roles?</div>
+        <div class="bubble">Yes! Tech Lead and Principal iOS Engineer roles across Europe.</div>
+        <div class="bubble">Let's build something good.</div>
+        <span class="typing">Delivered</span>
+      </div>
+      <div class="compose"><span>Say hello…</span><a href="mailto:emad.hegab@gmail.com" aria-label="Send email">↑</a></div>
+      <a class="btn" href="https://www.linkedin.com/in/mehegab/">Or connect on LinkedIn</a>
+    </section>
+
+    <section class="app safari" data-app="safari">
+      <div class="sbar"><a class="done" id="s-done" href="#">Done</a><span class="addr">🔒 <span id="s-host"></span></span><span class="aa">aA</span></div>
+      <div class="load"></div>
+      <div class="page" id="s-page"></div>
+    </section>
+
+    <a class="indicator" href="#" aria-label="Home" draggable="false"></a>
   </div>
-  <ul class="sheet-stack"><li>SwiftUI</li><li>Jetpack Compose</li><li>Kotlin Multiplatform</li><li>Rails</li></ul>
-  <a class="pill" href="https://storiapod.com">Visit storiapod.com</a>
-</dialog>
+</div>
 
-<footer>
-  <div class="wrap">
-    <ul class="facts">
-      <li>BSc Computer Science, Cairo University</li>
-      <li>Arabic · English · German (B1)</li>
-      <li>Based in Berlin</li>
-    </ul>
-    <span>© 2026 Moe Hegab · <a href="resume.html">Resume</a></span>
-  </div>
-</footer>
+<script>
+  const screen = document.querySelector('.screen');
+  const apps = document.querySelectorAll('.app');
+
+  // In-phone Safari. Own pages load in an iframe. GitHub and LinkedIn refuse iframes,
+  // so GitHub is rebuilt from its public API and LinkedIn from the Work app's data.
+  const page = document.getElementById('s-page');
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => `&#${c.charCodeAt(0)};`);
+  const newTab = (href, label) => `<a class="btn" target="_blank" rel="noopener" href="${esc(href)}">${label} ↗</a>`;
+  const preview = (title, desc, href) => `<div class="center"><div class="globe">🧭</div><h1>${esc(title)}</h1><p>${esc(desc)}</p>
+    ${newTab(href, 'Open in a new tab')}<p class="wink">Some websites are shy about loading inside a pretend iPhone.</p></div>`;
+
+  let github; // fetched once per visit: the unauthenticated API allows 60 requests an hour
+  const renderers = {
+    'github.com': async href => {
+      github ??= Promise.all(['', '/repos?sort=pushed&per_page=100'].map(p =>
+        fetch(`https://api.github.com/users/emadhegab${p}`).then(r => r.ok ? r.json() : Promise.reject(r.status))));
+      const [u, repos] = await github.catch(e => { github = null; throw e; });
+      const top = repos.filter(r => !r.fork).sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6);
+      return `<div class="center"><img class="avatar" src="${esc(u.avatar_url)}" alt=""><h1>${esc(u.name || u.login)}</h1>
+        <p>@${esc(u.login)}${u.bio ? ' · ' + esc(u.bio) : ''}</p>
+        <p class="stats"><b>${u.followers}</b> followers · <b>${u.following}</b> following · <b>${u.public_repos}</b> repos</p></div>
+        <div class="group">${top.map(r => `<a class="row" target="_blank" rel="noopener" href="${esc(r.html_url)}"><div>
+          <b>${esc(r.name)}</b><small>${esc(r.description || '')}</small>
+          <small>${r.language ? esc(r.language) + ' · ' : ''}★ ${r.stargazers_count}</small></div></a>`).join('')}</div>
+        ${newTab(href, 'Open on GitHub')}`;
+    },
+    'www.linkedin.com': href => `<div class="li"><div class="li-banner"></div>
+      <img class="avatar" src="images/moe-hegab.jpg" alt=""><h1>Moe Hegab</h1>
+      <p>Tech Lead · iOS at heart, platforms in mind<br>Berlin, Germany</p><span class="badge">Open to work</span>
+      <h2>Experience</h2><div class="group">${[...document.querySelectorAll('[data-app="work"] summary')]
+        .map(s => `<div class="row">${s.innerHTML}</div>`).join('')}</div>
+      <h2>Education</h2><div class="group"><div class="row"><div><b>Cairo University</b><small>BSc Computer Science</small></div></div></div>
+      ${newTab(href, 'Connect on LinkedIn')}</div>`,
+    'storiapod.com': href => preview('Storiapod', 'Arabic audio stories and drama.', href),
+  };
+
+  let safariFrom = '';
+  const openSafari = async link => {
+    const own = link.host === location.host;
+    document.getElementById('s-host').textContent = own ? 'hegab.app' : link.hostname.replace(/^www\./, '');
+    page.className = own ? 'page frame' : 'page';
+    page.innerHTML = own ? `<iframe src="${esc(link.href)}" title="${esc(link.textContent.trim())}"></iframe>` : '';
+    safariFrom = location.hash;
+    location.hash = 'safari';
+    // Links out of an embedded page would hit the same iframe refusal, so send them to a real tab.
+    if (own) return page.querySelector('iframe').onload = e =>
+      e.target.contentDocument.querySelectorAll('a[href^="http"], a[href^="mailto"]').forEach(a => a.target = '_blank');
+    const render = renderers[link.hostname] || (href => preview(link.hostname, '', href));
+    page.innerHTML = await Promise.resolve(render(link.href)).catch(() => preview(link.hostname, '', link.href));
+  };
+  // "Done" returns to the app Safari was opened from, like SFSafariViewController.
+  document.getElementById('s-done').addEventListener('click', e => { e.preventDefault(); location.hash = safariFrom; });
+  if (location.hash === '#safari') location.hash = ''; // nothing to show on a cold deep link
+
+  // Zoom each app out of the icon that opened it.
+  screen.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (!link || link.target === '_blank') return;
+    const external = 'safari' in link.dataset || (/^https?:$/.test(link.protocol) && link.host !== location.host);
+    const app = document.querySelector(`.app[data-app="${external ? 'safari' : link.hash.slice(1)}"]`);
+    if (!app || (!external && !link.getAttribute('href').startsWith('#'))) return;
+    const r = link.getBoundingClientRect(), s = screen.getBoundingClientRect();
+    app.style.transformOrigin = `${r.left - s.left + r.width / 2}px ${r.top - s.top + r.height / 2}px`;
+    if (external) { e.preventDefault(); openSafari(link); }
+  });
+
+  const route = () => apps.forEach(a => a.classList.toggle('open', a.dataset.app === location.hash.slice(1)));
+  addEventListener('hashchange', route);
+  route();
+  addEventListener('keydown', e => { if (e.key === 'Escape') location.hash = ''; });
+
+  // Career widget: cycle through the jobs listed in the Work app.
+  const career = document.getElementById('career');
+  const jobs = [...document.querySelectorAll('[data-app="work"] details')].filter(d => d.querySelector('img'));
+  let job = 0;
+  setInterval(() => {
+    if (document.hidden) return;
+    career.classList.add('fade');
+    setTimeout(() => {
+      job = (job + 1) % jobs.length;
+      const s = jobs[job].querySelector('summary');
+      career.querySelector('img').src = s.querySelector('img').src;
+      career.querySelector('.kicker').textContent = job ? 'Then' : 'Now';
+      career.querySelector('b').textContent = s.querySelector('b').textContent;
+      career.querySelector('small').textContent = s.querySelector('small').textContent;
+      career.classList.remove('fade');
+    }, 300);
+  }, 3500);
+  career.addEventListener('click', () => jobs.forEach((d, i) => d.open = i === job));
+
+  // Swipe up on the home indicator to close the open app.
+  const indicator = document.querySelector('.indicator');
+  let drag = null;
+  indicator.addEventListener('pointerdown', e => {
+    const app = document.querySelector('.app.open');
+    if (!app) return;
+    e.preventDefault(); // the indicator is a link: stop native link-drag, which would swallow pointerup
+    indicator.dataset.dragged = '';
+    drag = { app, y: e.clientY, dy: 0 };
+    app.style.transition = 'none';
+  });
+  // Track on window so the gesture survives the pointer leaving the small indicator.
+  addEventListener('pointermove', e => {
+    if (!drag) return;
+    drag.dy = Math.max(0, drag.y - e.clientY);
+    drag.app.style.transform = `translateY(${-drag.dy}px) scale(${1 - drag.dy / 800})`;
+    drag.app.style.borderRadius = `${Math.min(48, drag.dy / 2)}px`;
+  });
+  const endSwipe = () => {
+    if (!drag) return;
+    const { app, dy } = drag;
+    drag = null;
+    app.style.transition = app.style.transform = app.style.borderRadius = '';
+    if (dy > 80) location.hash = '';
+    indicator.dataset.dragged = dy > 5 ? '1' : '';
+  };
+  addEventListener('pointerup', endSwipe);
+  addEventListener('pointercancel', endSwipe);
+  // A short drag that snapped back should not also count as a tap.
+  indicator.addEventListener('click', e => { if (indicator.dataset.dragged) e.preventDefault(); indicator.dataset.dragged = ''; });
+
+  const clock = document.getElementById('clock');
+  const tick = () => clock.textContent = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }).replace(/\s?[AP]M/i, '');
+  tick(); setInterval(tick, 10000);
+</script>
 
 </body>
 </html>
